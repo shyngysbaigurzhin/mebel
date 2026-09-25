@@ -131,7 +131,7 @@ nav a{text-decoration:none;color:var(--muted)}
 nav a:hover{color:var(--ink)}
 header .btn{padding:12px 18px;font-size:15px}
 
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:32px 64px}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;padding-block:32px 64px}
 .hero .lead{font-size:19px;color:var(--muted);margin-top:18px;max-width:34em}
 .paths{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
 .path{display:flex;flex-direction:column;gap:6px;padding:18px 20px;border-radius:14px;text-decoration:none;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line)}
@@ -139,16 +139,16 @@ header .btn{padding:12px 18px;font-size:15px}
 .path b{font-size:17px}
 .path span{font-family:var(--mono);font-size:13px;color:var(--clay)}
 .hero-photo{position:relative;margin:0}
-.hero-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:200px 200px 16px 16px;background:var(--panel)}
+.hero-photo img{width:100%;aspect-ratio:4/5;max-height:520px;object-fit:cover;object-position:center 60%;border-radius:160px 160px 16px 16px;background:var(--panel)}
 .hero-photo figcaption{position:absolute;left:16px;bottom:16px;background:var(--surface);color:var(--ink);font-family:var(--mono);font-size:12px;padding:8px 12px;border-radius:999px}
 
 section{padding-block:64px;border-top:1px solid var(--line)}
 .sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;max-width:44em}
 .sec-head p{color:var(--muted)}
 
-.master{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
+.master{display:grid;grid-template-columns:.75fr 1.25fr;gap:48px;align-items:center}
 .master figure{margin:0;display:flex;flex-direction:column;gap:10px}
-.master figure img{border-radius:16px;aspect-ratio:673/1000;object-fit:cover;background:var(--panel)}
+.master figure img{border-radius:16px;aspect-ratio:1/1;max-height:440px;width:100%;object-fit:cover;object-position:center 35%;background:var(--panel)}
 figcaption{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .master .text{display:flex;flex-direction:column;gap:16px}
 .master .text p{max-width:62ch}
