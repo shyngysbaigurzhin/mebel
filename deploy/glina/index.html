@@ -452,5 +452,34 @@ footer.site{padding-block:28px;border-top:1px solid var(--line);font-size:14px;c
   });
 })();
 </script>
+
+<script>
+/* CRM valmaty: заказ глины → Google Таблица + Telegram, клики WhatsApp/звонок → статистика */
+(function(){
+  var CRM_URL='https://script.google.com/macros/s/AKfycbz__8mcCabB3vMAsYrT5SSdAd6zdslqI08vMoTotluwlggwlU6gIV8zVKSuxPe1eWmF2g/exec';
+  var SITE=location.hostname.replace(/^www\./,'');
+  var q=new URLSearchParams(location.search);
+  var UTM=q.get('utm_source')||(document.referrer&&document.referrer.indexOf(location.hostname)<0?new URL(document.referrer).hostname:'прямой заход');
+  function send(data){
+    try{
+      var body=new URLSearchParams(Object.assign({site:SITE,page:location.pathname,utm:UTM},data));
+      if(navigator.sendBeacon&&navigator.sendBeacon(CRM_URL,body))return;
+      fetch(CRM_URL,{method:'POST',body:body,mode:'no-cors',keepalive:true});
+    }catch(e){}
+  }
+  function waText(h){try{return new URL(h).searchParams.get('text')||'';}catch(e){return '';}}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');
+    if(!a)return;
+    var h=a.getAttribute('href')||'';
+    if(a.id==='order'){
+      send({type:'form',name:'',phone:'пишет в WhatsApp',message:waText(h)});
+      return;
+    }
+    if(/wa\.me|whatsapp/i.test(h))send({type:'whatsapp'});
+    else if(h.indexOf('tel:')===0)send({type:'call'});
+  });
+})();
+</script>
 </body>
 </html>
